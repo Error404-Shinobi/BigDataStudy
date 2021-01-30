@@ -25,7 +25,7 @@ public class hbaseApiDemo {
      */
     private Connection connection;
     private Admin admin;
-    @Test
+    @BeforeTest
     public void beforeTest() throws IOException {
         //1.使用HbaseConfiguration.create()创建HBase配置
         Configuration configuration = HBaseConfiguration.create();
@@ -38,6 +38,9 @@ public class hbaseApiDemo {
 
     @Test
     public void createTableTest() throws IOException {
+        Configuration configuration = HBaseConfiguration.create();
+        Connection connection = ConnectionFactory.createConnection(configuration);
+        Admin admin = connection.getAdmin();
         //tableExists()需要的一个参数为TableName，所以要创建一个表名
         TableName tableName = TableName.valueOf("WATER_BILL");
         //1.判断表是否存在
@@ -82,9 +85,14 @@ public class hbaseApiDemo {
             admin.disableTable(tableName);
             //3.再删除表
             admin.deleteTable(tableName);
+            admin.close();
+            connection.close();
+        }
+        else{
+            return;
         }
     }
-    @Test
+    @AfterTest
     public void afterTest() throws IOException {
         Configuration configuration = HBaseConfiguration.create();
         Connection connection = ConnectionFactory.createConnection(configuration);
