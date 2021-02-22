@@ -1,2 +1,2 @@
 # BigDataStudy
-this is some studyDemo
+this is some studyDemos
