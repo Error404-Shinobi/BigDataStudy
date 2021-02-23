@@ -1,7 +1,6 @@
-package Flow_Sort_demo2;
+package Flow_Partition_demo3;
 
-import org.apache.hadoop.io.WritableComparable;
-import org.jetbrains.annotations.NotNull;
+import org.apache.hadoop.io.Writable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -11,7 +10,7 @@ import java.io.IOException;
  * @Author xuansama
  * @Date 2021/2/22 - 5:26 下午
  */
-public class FlowBean implements WritableComparable <FlowBean>{
+public class FlowBean implements Writable {
     private Integer upFlow;
     private Integer downFlow;
     private Integer upCountFlow;
@@ -70,10 +69,5 @@ public class FlowBean implements WritableComparable <FlowBean>{
         this.downFlow = in.readInt();
         this.upCountFlow = in.readInt();
         this.downCountFlow = in.readInt();
-    }
-
-    @Override
-    public int compareTo( FlowBean flowBean) {
-        return flowBean.upFlow - this.upFlow;
     }
 }
