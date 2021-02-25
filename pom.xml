@@ -12,6 +12,7 @@
         <module>HBase_api</module>
         <module>Zookeeper_api</module>
         <module>MapReduce</module>
+        <module>MapReduce_join</module>
     </modules>
 
     <properties>
